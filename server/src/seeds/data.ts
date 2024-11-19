@@ -42,13 +42,22 @@ const usernames = [
   // Utility to generate random users
   export const getRandomUsers = (count: number) => {
     const users = [];
+    const usedUsernames = new Set<string>();
+    
     for (let i = 0; i < count; i++) {
-        const username = getRandomArrItem(usernames);
-        const email = `${username.replace(/[^a-zA-Z0-9]/g, '')}${i}@example.com`;
-        users.push({ username, email });
+      let username = getRandomArrItem(usernames);
+  
+      while (usedUsernames.has(username)) {
+        username = getRandomArrItem(usernames);
+      }
+      usedUsernames.add(username);
+  
+      const email = `${username.replace(/[^a-zA-Z0-9]/g, '')}${i}@example.com`;
+      users.push({ username, email });
     }
     return users;
-};
+  };
+  
   
   // Utility to generate random thoughts
   export const getRandomThoughts = (count: number, usernames: string[]) => {
