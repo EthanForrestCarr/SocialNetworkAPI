@@ -1,8 +1,8 @@
-import db from '../config/connection';
-import User from '../models/User';
-import Thought from '../models/Thought';
-import cleanDB from './cleanDB';
-import { getRandomUsers, getRandomThoughts, getRandomReactions, getRandomArrItem } from './data';
+import db from '../config/connection.js';
+import User from '../models/User.js';
+import Thought from '../models/Thought.js';
+import cleanDB from './cleanDB.js';
+import { getRandomUsers, getRandomThoughts, getRandomReactions, getRandomArrItem } from './data.js';
 
 const seedDatabase = async () => {
   try {
