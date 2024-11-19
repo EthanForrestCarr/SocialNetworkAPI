@@ -8,7 +8,7 @@ export const getAllUsers = async (_req: Request, res: Response) => {
         const users = await User.find().populate('thoughts').populate('friends');
         res.json(users);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: (error as Error).message });
     }
 };
 
@@ -24,7 +24,7 @@ export const getUserById = async (req: Request, res: Response) => {
         }
         res.json(user);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: (error as Error).message });
     }
 };
 
@@ -34,7 +34,7 @@ export const createUser = async (req: Request, res: Response) => {
         const newUser = await User.create(req.body);
         res.status(201).json(newUser);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
 
@@ -52,7 +52,7 @@ export const updateUser = async (req: Request, res: Response) => {
         }
         res.json(updatedUser);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
 
@@ -67,7 +67,7 @@ export const deleteUser = async (req: Request, res: Response) => {
         await Thought.deleteMany({ _id: { $in: deletedUser.thoughts } });
         res.json({ message: 'User and associated thoughts deleted successfully' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: (error as Error).message });
     }
 };
 
@@ -85,7 +85,7 @@ export const addFriend = async (req: Request, res: Response) => {
         }
         res.json(updatedUser);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
 
@@ -103,7 +103,7 @@ export const removeFriend = async (req: Request, res: Response) => {
         }
         res.json(updatedUser);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
 

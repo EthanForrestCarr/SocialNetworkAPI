@@ -31,7 +31,7 @@ const reactionSchema = new Schema<IReaction>({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (date: Date) => date.toLocaleString(),
+        get: (date: Date) => date,
     },
 }, {
     toJSON: { getters: true },
@@ -48,7 +48,7 @@ const thoughtSchema = new Schema<IThought>({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (date: Date) => date.toLocaleString(),
+        get: (date: Date) => date
     },
     username: {
         type: String,

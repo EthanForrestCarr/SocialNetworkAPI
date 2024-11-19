@@ -8,7 +8,7 @@ export const getAllThoughts = async (_req: Request, res: Response) => {
         const thoughts = await Thought.find();
         res.json(thoughts);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: (error as Error).message });
     }
 };
 
@@ -22,7 +22,7 @@ export const getThoughtById = async (req: Request, res: Response) => {
         }
         res.json(thought);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: (error as Error).message });
     }
 };
 
@@ -38,7 +38,7 @@ export const createThought = async (req: Request, res: Response) => {
         );
         res.status(201).json(newThought);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
 
@@ -56,7 +56,7 @@ export const updateThought = async (req: Request, res: Response) => {
         }
         res.json(updatedThought);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
 
@@ -74,7 +74,7 @@ export const deleteThought = async (req: Request, res: Response) => {
         );
         res.json({ message: 'Thought deleted successfully' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: (error as Error).message });
     }
 };
 
@@ -92,7 +92,7 @@ export const addReaction = async (req: Request, res: Response) => {
         }
         res.json(updatedThought);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
 
@@ -110,6 +110,6 @@ export const deleteReaction = async (req: Request, res: Response) => {
         }
         res.json(updatedThought);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ message: (error as Error).message });
     }
 };
