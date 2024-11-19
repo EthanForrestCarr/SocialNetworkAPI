@@ -12,29 +12,32 @@ const userSchema = new Schema<IUser>({
         type: String,
         required: true,
         unique: true,
-        trim: true,
+        trim: true
     },
     email: {
         type: String,
         required: true,
         unique: true,
-        match: [/^.+@.+\\..+$/, 'Must match a valid email address!'],
-    },
+        match: [
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            'Must match a valid email address!',
+        ]
+    },    
     thoughts: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Thought',
-        },
+        }
     ],
     friends: [
         {
             type: Schema.Types.ObjectId,
             ref: 'User',
-        },
+        }
     ],
 }, {
     toJSON: { virtuals: true },
-    id: false,
+    id: false
 });
 
 userSchema.virtual('friendCount').get(function () {

@@ -7,6 +7,7 @@ const usernames = [
     'nature_lover',
   ];
   
+  /*
   const emails = [
     'sharkfan123@example.com',
     'pianomaster@example.com',
@@ -15,7 +16,8 @@ const usernames = [
     'codingwiz@example.com',
     'naturelover@example.com',
   ];
-  
+  */
+
   const thoughtTexts = [
     'Skateboarding is life!',
     'Music is the language of the soul.',
@@ -41,12 +43,12 @@ const usernames = [
   export const getRandomUsers = (count: number) => {
     const users = [];
     for (let i = 0; i < count; i++) {
-      const username = getRandomArrItem(usernames);
-      const email = getRandomArrItem(emails);
-      users.push({ username, email });
+        const username = getRandomArrItem(usernames);
+        const email = `${username.replace(/[^a-zA-Z0-9]/g, '')}${i}@example.com`;
+        users.push({ username, email });
     }
     return users;
-  };
+};
   
   // Utility to generate random thoughts
   export const getRandomThoughts = (count: number, usernames: string[]) => {
