@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const db = async (): Promise<typeof mongoose.connection> =>{
     try {
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ethan:aoioWnNJCQ8deYMI@cluster0.f49g2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/postDB');
         console.log('Database connected.');
         return mongoose.connection;
     } catch(error) {
